@@ -1,0 +1,37 @@
+{% extends 'back.html.twig' %}
+{# on vient charger le template #}
+{# AUCUN CODE HTML en dehors des block twig #}
+
+{% block titre %} Home - {{ parent() }} {% endblock %}
+{# avec parent je recupere le contenu du bloque parent #}
+
+{% block central%} 
+    <h1>Home</h1>
+   <div class="row">
+    <div class="offset-3 col-6">
+
+    <table class="table table-striped">
+            <tbody>
+                {% for p in personnes %}
+                <tr>
+                    <td>{{p.id}}</td>
+                    <td>{{ p.prenom }} {{p.nom}}</td>
+                    <td>
+                    
+                    </td>
+                    <td>
+                        <a href="{{ path('personne_enlever',{id:p.id}) }}" 
+                        class="btn btn-danger">effacer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('personne_ajouter') }}" 
+        class="btn btn-success">Ajouter</a>
+    </div>
+   </div>
+    
+   
+   
+{% endblock %}
